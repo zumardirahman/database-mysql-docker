@@ -3,9 +3,8 @@ services:
     image: mysql:8.0
     container_name: database-mysql8
     volumes:
-      #- data:/var/lib/mysql
-      - ../data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - database-mysql8-data:/var/lib/mysql  # Menggunakan volume yang didefinisikan
+      # - ./my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=toor12345
       # - MYSQL_DATABASE=myunand
@@ -16,6 +15,8 @@ services:
     networks:
       - myunand_network
 
-
 networks:
   myunand_network:
+
+volumes:
+  database-mysql8-data:  # Mendefinisikan volume di sini
