@@ -1,0 +1,21 @@
+services:
+  dbmysql8:
+    image: mysql:8.0
+    container_name: database-mysql8
+    volumes:
+      #- data:/var/lib/mysql
+      - ../data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor12345
+      # - MYSQL_DATABASE=myunand
+      # - MYSQL_PASSWORD=myunand12345
+      # - MYSQL_USER=myunand
+    ports:
+      - "3306:3306"
+    networks:
+      - myunand_network
+
+
+networks:
+  myunand_network:
